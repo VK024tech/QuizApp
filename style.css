@@ -269,6 +269,7 @@ body{
     padding-inline: 1rem;
     border-radius: 16px;
     box-shadow: -3px 3px 0px 4px #d6d7d5;
+    /* max-height: 369.6px; */
 }
 
 
@@ -287,6 +288,7 @@ body{
     justify-content: space-between;
     align-items: center;
     /* width: 94%; */
+    max-height: 27px;
 }
 
 .option.disable{

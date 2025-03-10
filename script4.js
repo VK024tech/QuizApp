@@ -9,7 +9,7 @@ function totalNo(array, value) {
 }
 
 userInputArray = JSON.parse(localStorage.getItem("quizData"));
-console.log(userInputArray);
+// console.log(userInputArray);
 
 const totalCorrect = totalNo(userInputArray, "Correct");
 const totalInCorrect = totalNo(userInputArray, "incorrect");

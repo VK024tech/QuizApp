@@ -96,9 +96,9 @@ function loadQuestion() {
     optionArray = [...incorr, corr];
 
     // optionArray = [1, 2, 3, 4];
-    console.log(optionArray);
+    // console.log(optionArray);
     optionArray = shuffleArray(optionArray);
-    console.log(shuffleArray(optionArray));
+    // console.log(shuffleArray(optionArray));
 
     optionOne.innerText = optionArray[0];
     optionTwo.innerText = optionArray[1];
@@ -106,7 +106,7 @@ function loadQuestion() {
     optionFour.innerText = optionArray[3];
   } else {
     clearInterval(intervalId);
-    console.log("finished");
+    // console.log("finished");
     location.assign("index-03.html");
   }
 }
@@ -173,19 +173,19 @@ function handleAnswer(selectedOption) {
     selectedOption === null
   ) {
     if (selectedOption === null) {
-      console.log("time ran out");
+    //   console.log("time out");
       setTimeout(() => {
         if (localStorage.getItem("quizData")) {
           if (storedData.length) {
             userInputArray = JSON.parse(localStorage.getItem("quizData"));
             userInputArray.push("out of time");
             localStorage.setItem("quizData", JSON.stringify(userInputArray));
-            console.log("saved");
+            // console.log("saved");
           }
         } else {
           userInputArray.push("out of time");
           localStorage.setItem("quizData", JSON.stringify(userInputArray));
-          console.log("setitem");
+        //   console.log("setitem");
         }
 
         indexx++;
@@ -193,38 +193,38 @@ function handleAnswer(selectedOption) {
       }, 2000);
     } else {
       setTimeout(() => {
-        console.log("correct");
+        // console.log("correct");
 
         if (localStorage.getItem("quizData")) {
           if (storedData.length) {
             userInputArray = JSON.parse(localStorage.getItem("quizData"));
             userInputArray.push("Correct");
             localStorage.setItem("quizData", JSON.stringify(userInputArray));
-            console.log("saved");
+            // console.log("saved");
           }
         } else {
           userInputArray.push("Correct");
           localStorage.setItem("quizData", JSON.stringify(userInputArray));
-          console.log("setitem");
+        //   console.log("setitem");
         }
         indexx++;
         loadQuestion();
       }, 2000);
     }
   } else {
-    console.log("incorrect");
+    // console.log("incorrect");
     setTimeout(() => {
       if (localStorage.getItem("quizData")) {
         if (storedData.length) {
           userInputArray = JSON.parse(localStorage.getItem("quizData"));
           userInputArray.push("incorrect");
           localStorage.setItem("quizData", JSON.stringify(userInputArray));
-          console.log("saved");
+        //   console.log("saved");
         }
       } else {
         userInputArray.push("incorrect");
         localStorage.setItem("quizData", JSON.stringify(userInputArray));
-        console.log("setitem");
+        // console.log("setitem");
       }
       indexx++;
       loadQuestion();
