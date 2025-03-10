@@ -84,12 +84,21 @@ function loadQuestion() {
     const optionThree = document.querySelector(".option-3");
     const optionFour = document.querySelector(".option-4");
 
-    ///shuffle array
+    // /shuffle array
 
-    optionArray = shuffleArray([
-      data.results[indexx].correct_answer,
-      ...data.results[indexx].incorrect_answers,
-    ]);
+    // optionArray = shuffleArray([
+    //   data.results[indexx].correct_answer,
+    //   ...data.results[indexx].incorrect_answers,
+    // ]);
+    // console.log(optionArray);
+    let incorr = data.results[indexx].incorrect_answers;
+    let corr = data.results[indexx].correct_answer;
+    optionArray = [...incorr, corr];
+
+    // optionArray = [1, 2, 3, 4];
+    console.log(optionArray);
+    optionArray = shuffleArray(optionArray);
+    console.log(shuffleArray(optionArray));
 
     optionOne.innerText = optionArray[0];
     optionTwo.innerText = optionArray[1];
@@ -99,20 +108,23 @@ function loadQuestion() {
     clearInterval(intervalId);
     console.log("finished");
     location.assign("index-03.html");
-    
   }
 }
 
 ///////////Shuffle Array//////////////////////////////////////////////////
 
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    [array[i], (array[j] = array[j]), array[i]];
-  }
-  return array;
-}
+// function shuffleArray(array) {
+//   for (let i = array.length - 1; i > 0; i--) {
+//     let j = Math.floor(Math.random() * (i + 1));
+//     [array[i], (array[j] = array[j]), array[i]];
+//   }
+//   return array;
+// }
 
+function shuffleArray(array) {
+  let newarray = array.sort((a, b,c,d) => 0.5 - Math.random());
+  return newarray
+}
 //////////////Start Timer//////////////////////////////////////////////////
 
 function startTimer() {
