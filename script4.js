@@ -37,7 +37,7 @@ incorrectPercent.innerText = wrongPercent+'%'
 
 
 const correctMeter = document.querySelector('.correct-answer')
-// correctMeter.style.maxWidth = rightPercent+'%'
+correctMeter.style.maxWidth = rightPercent+'%'
 
 
 

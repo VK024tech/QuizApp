@@ -352,16 +352,18 @@ body{
 
 .correct-answer{
     background-color: #35BD3A;
-    max-width: 30%;
+    max-width: 10%;
     max-height: 100px;
     border-radius: 12px;
     position: relative;
+    /* transition: 1000ms all ease-in-out; */
 }
 
 .incorrect{
-    position: relative;
-    left: 315%;
-    top: 70px;
+    position: fixed;
+    
+    right: 340px;
+    bottom: 340px;
     max-width: 100px;
     
 }
@@ -369,15 +371,17 @@ body{
 .incorrect-percent{
     font-size: 20px;
     font-weight: 600;
-    text-align: right;
+    position: relative;
+    left: 60px;
+    /* text-align: right; */
     margin: 0;
 
 }
 
 .correct{
     position: relative;
-    right: 20%;
-    bottom: 30px;
+    right: 40px;
+    top: 70px;
     max-width: 100px;
     
 }
