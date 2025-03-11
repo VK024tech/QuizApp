@@ -70,6 +70,10 @@ function loadQuestion() {
     wrongAns.remove();
   }
 
+  document.body.classList.remove("time10", "time30");
+  const countdownTimer = document.querySelector(".timer");
+  countdownTimer.classList.remove("timer30", "timer10");
+
   //////////////// Load question//////////////////////////////////////////////////
 
   if (indexx < data.results.length) {
