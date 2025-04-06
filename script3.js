@@ -3,6 +3,7 @@ const playButton = document.querySelector(".start");
 
 if (playButton) {
   playButton.addEventListener("click", () => {
+   
     location.assign("index-02.html");
   });
 }
@@ -18,23 +19,35 @@ let userInputArray = [];
 let storedData;
 
 //////////////////////Data Fetch///////////////////////////////////////////////
-fetchdata()
- async function fetchdata(){
-  const response = await fetch("https://opentdb.com/api.php?amount=25&category=18&type=multiple")
-  .then((response) => response.json())
-  .then((fetchedData) => {
-    data = fetchedData;
-    loadQuestion();
-  })
-  .catch((error) => {
-    console.error("Not able to fetch data from api");
-  });
- }
+if (window.location.pathname === '/index-02'){
+  fetchdata();
+}
+
+async function fetchdata() {
+  const response = await fetch(
+    "https://opentdb.com/api.php?amount=25&category=18&type=multiple"
+  )
+    .then((response) => response.json())
+    .then((fetchedData) => {
+      data = fetchedData;
+      loadQuestion();
+    })
+    .catch((error) => {
+      console.error("Not able to fetch data from api");
+      setInterval(()=>{
+        window.location.reload()
+      },2000)
+    });
+
+    
+    
+}
 ///////////////initialise  and Load Question///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 
 function loadQuestion() {
   /////////////initialise///////
+  
 
   if (localStorage.getItem("quizData")) {
     storedData = JSON.parse(localStorage.getItem("quizData"));
@@ -127,8 +140,8 @@ function loadQuestion() {
 // }
 
 function shuffleArray(array) {
-  let newarray = array.sort((a, b,c,d) => 0.5 - Math.random());
-  return newarray
+  let newarray = array.sort((a, b, c, d) => 0.5 - Math.random());
+  return newarray;
 }
 //////////////Start Timer//////////////////////////////////////////////////
 
@@ -178,7 +191,7 @@ function handleAnswer(selectedOption) {
     selectedOption === null
   ) {
     if (selectedOption === null) {
-    //   console.log("time out");
+      //   console.log("time out");
       setTimeout(() => {
         if (localStorage.getItem("quizData")) {
           if (storedData.length) {
@@ -190,7 +203,7 @@ function handleAnswer(selectedOption) {
         } else {
           userInputArray.push("out of time");
           localStorage.setItem("quizData", JSON.stringify(userInputArray));
-        //   console.log("setitem");
+          //   console.log("setitem");
         }
 
         indexx++;
@@ -210,7 +223,7 @@ function handleAnswer(selectedOption) {
         } else {
           userInputArray.push("Correct");
           localStorage.setItem("quizData", JSON.stringify(userInputArray));
-        //   console.log("setitem");
+          //   console.log("setitem");
         }
         indexx++;
         loadQuestion();
@@ -224,7 +237,7 @@ function handleAnswer(selectedOption) {
           userInputArray = JSON.parse(localStorage.getItem("quizData"));
           userInputArray.push("incorrect");
           localStorage.setItem("quizData", JSON.stringify(userInputArray));
-        //   console.log("saved");
+          //   console.log("saved");
         }
       } else {
         userInputArray.push("incorrect");
@@ -333,11 +346,4 @@ multipleOptions.addEventListener("click", (event) => {
   }
 });
 
-// //////////////////initial reload/////////////////////
-// function reloadPage(delay) {
-//   setTimeout(function() {
-//     window.location.reload();
-//   }, delay);
-// }
 
-// reloadPage(2000);
