@@ -138,6 +138,11 @@ body{
         
         
     }
+
+  
+
+    
+   
 }
 
 @media(width < 720px){
@@ -185,8 +190,10 @@ body{
 .main{
     display: flex;
     flex-direction: column;
-    margin-inline: 11rem;
+    margin-inline: clamp(2rem, 10%, 11rem)
+    
 }
+
 
 
 .Header-cont{
@@ -319,6 +326,7 @@ body{
     flex-direction: column;
     justify-content: center;
     /* align-items: center; */
+    margin-inline: clamp(2rem, 10%, 11rem)
 }
 
 .header-logo {
@@ -370,6 +378,13 @@ body{
     
 }
 
+@media (width<900px){
+    .incorrect{
+       visibility: hidden;
+        
+    }
+}
+
 .incorrect-percent{
     font-size: 20px;
     font-weight: 600;
@@ -386,6 +401,13 @@ body{
     top: 70px;
     max-width: 100px;
     
+}
+
+@media (width<900px){
+    .correct{
+       visibility: hidden;
+        
+    }
 }
 
 .correct-percent{

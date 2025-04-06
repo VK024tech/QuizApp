@@ -18,8 +18,9 @@ let userInputArray = [];
 let storedData;
 
 //////////////////////Data Fetch///////////////////////////////////////////////
-
-fetch("https://opentdb.com/api.php?amount=25&category=18&type=multiple")
+fetchdata()
+ async function fetchdata(){
+  const response = await fetch("https://opentdb.com/api.php?amount=25&category=18&type=multiple")
   .then((response) => response.json())
   .then((fetchedData) => {
     data = fetchedData;
@@ -28,7 +29,7 @@ fetch("https://opentdb.com/api.php?amount=25&category=18&type=multiple")
   .catch((error) => {
     console.error("Not able to fetch data from api");
   });
-
+ }
 ///////////////initialise  and Load Question///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -240,11 +241,11 @@ function handleAnswer(selectedOption) {
 
 function toggleMute() {
   const volumeButton = document.querySelector(".volume");
-  if (volumeButton.src === "http://127.0.0.1:5500/Volume_ON.svg") {
-    volumeButton.src = "http://127.0.0.1:5500/Mute.svg";
+  if (volumeButton.src === "./Volume_ON.svg") {
+    volumeButton.src = "./Mute.svg";
     isMute = true;
   } else {
-    volumeButton.src = "http://127.0.0.1:5500/Volume_ON.svg";
+    volumeButton.src = "./Volume_ON.svg";
     isMute = false;
   }
 }
@@ -265,7 +266,7 @@ const multipleOptions = document.querySelector(".options");
 
 multipleOptions.addEventListener("mouseover", (event) => {
   if (event.target.classList.contains("option")) {
-    const hoverSound = new Audio("http://127.0.0.1:5500/Hover.wav");
+    const hoverSound = new Audio("./Hover.wav");
     hoverSound.currentTime = 0;
     hoverSound.play();
     hoverSound.muted = isMute;
@@ -276,12 +277,12 @@ multipleOptions.addEventListener("click", (event) => {
   if (event.target.classList.contains("option")) {
     // handleAnswer(event.target.innerHTML);
     const selectedOption = event.target.innerHTML;
-    const correctSound = new Audio("http://127.0.0.1:5500/correct.mp3");
-    const incorrectSound = new Audio("http://127.0.0.1:5500/incorrect.mp3");
+    const correctSound = new Audio("./correct.mp3");
+    const incorrectSound = new Audio("./incorrect.mp3");
     if (selectedOption == data.results[indexx].correct_answer) {
       let correctAns = document.createElement("img");
       correctAns.classList.add("correctCheckmark");
-      correctAns.src = "http://127.0.0.1:5500/correct.svg";
+      correctAns.src = "/correct.svg";
       event.target.appendChild(correctAns);
       event.target.style.borderColor = "#35BD3A";
       event.target.style.backgroundColor = "#95EA99";
@@ -303,7 +304,7 @@ multipleOptions.addEventListener("click", (event) => {
     } else {
       let wrongAns = document.createElement("img");
       wrongAns.classList.add("wrongCheckmark");
-      wrongAns.src = "http://127.0.0.1:5500/wrong.svg";
+      wrongAns.src = "./wrong.svg";
       event.target.appendChild(wrongAns);
       event.target.style.borderColor = "#FF5A5A";
       event.target.style.backgroundColor = "#FFA2A2";
@@ -311,7 +312,7 @@ multipleOptions.addEventListener("click", (event) => {
       const correctOption = multipleOptions.children[answer];
       let correctAns = document.createElement("img");
       correctAns.classList.add("correctCheckmark");
-      correctAns.src = "http://127.0.0.1:5500/correct.svg";
+      correctAns.src = "./correct.svg";
       correctOption.appendChild(correctAns);
       correctOption.style.borderColor = "#35BD3A";
       incorrectSound.play();
@@ -331,3 +332,12 @@ multipleOptions.addEventListener("click", (event) => {
     }
   }
 });
+
+// //////////////////initial reload/////////////////////
+// function reloadPage(delay) {
+//   setTimeout(function() {
+//     window.location.reload();
+//   }, delay);
+// }
+
+// reloadPage(2000);
