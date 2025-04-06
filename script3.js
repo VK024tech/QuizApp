@@ -3,7 +3,6 @@ const playButton = document.querySelector(".start");
 
 if (playButton) {
   playButton.addEventListener("click", () => {
-   
     location.assign("index-02.html");
   });
 }
@@ -19,7 +18,7 @@ let userInputArray = [];
 let storedData;
 
 //////////////////////Data Fetch///////////////////////////////////////////////
-if (window.location.pathname === '/index-02'){
+if (window.location.pathname === "/index-02.html") {
   fetchdata();
 }
 
@@ -34,20 +33,16 @@ async function fetchdata() {
     })
     .catch((error) => {
       console.error("Not able to fetch data from api");
-      setInterval(()=>{
-        window.location.reload()
-      },2000)
+      setInterval(() => {
+        window.location.reload();
+      }, 2000);
     });
-
-    
-    
 }
 ///////////////initialise  and Load Question///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 
 function loadQuestion() {
   /////////////initialise///////
-  
 
   if (localStorage.getItem("quizData")) {
     storedData = JSON.parse(localStorage.getItem("quizData"));
@@ -345,5 +340,3 @@ multipleOptions.addEventListener("click", (event) => {
     }
   }
 });
-
-
